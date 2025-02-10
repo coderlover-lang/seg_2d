@@ -1,0 +1,4 @@
+/logs/
+/best_model/
+/lightning_logs/
+/evaluation/output/

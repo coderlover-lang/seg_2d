@@ -1,0 +1,7 @@
+media
+__pycache__
+.DS_Store
+models
+notes.txt
+storage
+data
