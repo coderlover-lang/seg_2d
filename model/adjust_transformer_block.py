@@ -3,15 +3,18 @@ import torch
 from einops import rearrange, einsum
 from torch.nn import functional as F 
 import sys 
-sys.path.append('/home/kathy/projects/project_guo/test/model')
-from attn import EPA_DIM, CustomEPA
-from emix_ffn import MIXFFN
+sys.path.append(".")
+# sys.path.append('/home/kathy/projects/project_guo/test/model')
+from model.attn import EPA_DIM, CustomEPA
+# from simple_attention
+from model.emix_ffn import MIXFFN
+from model.simple_attention import CrissCrossAttention, MultiHeadCrissCrossAttention
 
 class Block(nn.Module):
     def __init__(self, in_features, proj_features, num_heads, down_scale_ratio = 2, resolution = 16):
         super().__init__()
         self.ln_before = nn.LayerNorm(in_features) 
-        self.attn_block = CustomEPA(resolution ** 2, proj_features, proj_features, num_heads)
+        self.attn_block =  MultiHeadCrissCrossAttention(in_features, proj_features, num_heads=num_heads) # CustomEPA(resolution ** 2, proj_features, proj_features, num_heads)
         self.ln_after = nn.LayerNorm(in_features) 
         self.mix_ffn = MIXFFN(resolution, proj_features, mlp_ratio=2)
         self.resolution = resolution
