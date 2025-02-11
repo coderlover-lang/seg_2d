@@ -206,8 +206,6 @@ class CustomEPA(nn.Module):
         x = torch.cat((x_SA, x_CA), dim=-1)
         return x
 
-        
-
 if __name__ == "__main__":
     num_heads = 4
     attn = torch.nn.MultiheadAttention(embed_dim=64, num_heads=8)

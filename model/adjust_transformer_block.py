@@ -8,7 +8,7 @@ sys.path.append(".")
 from model.attn import EPA_DIM, CustomEPA
 # from simple_attention
 from model.emix_ffn import MIXFFN
-from model.simple_attention import CrissCrossAttention, MultiHeadCrissCrossAttention
+from model.crissCrossAttention import CrissCrossAttention, MultiHeadCrissCrossAttention
 
 class Block(nn.Module):
     def __init__(self, in_features, proj_features, num_heads, down_scale_ratio = 2, resolution = 16):
